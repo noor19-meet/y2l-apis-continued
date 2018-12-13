@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import requests, json
 app = Flask(__name__)
 
 @app.route('/')
@@ -26,7 +27,7 @@ def study_image():
         }
       }
     ]}
-    response = request.post(api_url, headers=headers, data=json.dumps(data))
+    response = requests.post(api_url, headers=headers, data=json.dumps(data))
     
     return render_template('home.html', results="No results yet :(")
 
